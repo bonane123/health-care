@@ -51,19 +51,13 @@
                 <a href="/" class="nav-item nav-link active">Home</a>
                 <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
                 <a href="{{ route('services') }}" class="nav-item nav-link">Service</a>
-                {{-- <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                        <a href="team.html" class="dropdown-item">Our Dentist</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="appointment.html" class="dropdown-item">Appointment</a>
-                    </div>
-                </div> --}}
                 <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
+                <a href="{{ route('appointment') }}" class="nav-item nav-link">Appointment</a>
+                <a href="{{ route('login') }}" class="nav-item nav-link">Sign in</a>
             </div>
+            <a href="{{ route('register') }}" class="btn btn-primary py-2 px-4 ms-3">Sign up</a>
             <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i
-                    class="fa fa-search"></i></button>
-            <a href="{{ route('appointment') }}" class="btn btn-primary py-2 px-4 ms-3">Appointment</a>
+                    class="fa fa-search"></i>
+            </button>
         </div>
     </nav>

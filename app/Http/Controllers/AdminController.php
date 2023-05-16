@@ -55,4 +55,9 @@ class AdminController extends Controller
 
         return redirect()->back()->with($notification);
     } // End Method 
+
+    public function AllUsers(){
+        $users = User::latest()->get();
+        return view('backend.pages.users.all_users', compact('users'));
+    }
 }

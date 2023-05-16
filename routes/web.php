@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Frontend;
+use App\Http\Controllers\hospital\HospitalController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,11 +33,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
     Route::get('/more/information', [AdminController::class, 'AdminProfile'])->name('more.information');
     Route::post('/more/information/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
+    Route::get('/users/all', [AdminController::class, 'AllUsers'])->name('all.users');
 
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'edit')->name('profile.edit');
         Route::patch('/profile', 'update')->name('profile.update');
         Route::delete('/profile', 'destroy')->name('profile.destroy');
+
+    });
+
+    Route::controller(HospitalController::class)->group(function () {
+        Route::get('/hospital/categories', 'HospitalCategory')->name('hospital.category');
+        Route::post('/hospital/categories/store', 'HospitalCategoryStore')->name('hospital.category.store');
+        Route::get('/hospital/all', 'AllHospitals')->name('all.hospitals');
+        Route::get('/hospital/add', 'AddHospital')->name('add.hospital');
+        Route::post('/hospital/add/store', 'AddNewHospital')->name('hospital.add.new');
+        
+        Route::get('/district/ajax/{province_id}', 'GetDistrict');
+        Route::get('/sector/ajax/{district_id}', 'GetSector');
+        Route::get('/cell/ajax/{sector_id}', 'GetCell');
+        
     });
 });
 

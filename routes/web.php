@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Frontend;
 use App\Http\Controllers\hospital\HospitalController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +54,15 @@ Route::middleware('auth')->group(function () {
         Route::get('/sector/ajax/{district_id}', 'GetSector');
         Route::get('/cell/ajax/{sector_id}', 'GetCell');
         
+    });
+
+    Route::controller(RoleController::class)->group(function (){
+        Route::get('/dashboard/pages/permission',  'AllPermissions')->name('dashboard.pages.permission.all');
+        Route::post('/dashboard/pages/permission/add',  'AddPermissions')->name('dashboard.pages.permission.add');
+        Route::get('/dashboard/pages/role',  'AllRoles')->name('dashboard.pages.role.all');
+        Route::post('/dashboard/pages/role/add',  'AddRole')->name('dashboard.pages.role.add');
+        Route::get('/dashboard/pages/role/permission/add',  'AddRolePermission')->name('dashboard.pages.role.permission.add');
+        Route::get('/dashboard/pages/role/permission',  'AllRolePermission')->name('dashboard.pages.role.permission.all');
     });
 });
 

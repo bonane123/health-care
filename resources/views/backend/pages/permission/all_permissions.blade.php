@@ -106,7 +106,7 @@
                                                 <td>{{ $permission->group_name }}</td>
                                                 <td>{{ $permission->name }}</td>
                                                 <td>
-                                                    <a href=""
+                                                    <a href="{{ route('dashboard.pages.permission.edit', $permission->id) }}"
                                                         class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
 
                                                     <a href=""

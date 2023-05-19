@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -22,6 +23,22 @@ class RoleController extends Controller
             'group_name' => $request->group_name,
         ]);
         return redirect()->back();
+    }
+
+    public function EditPermission($id)
+    {
+        $permission = Permission::findOrFail($id);
+        return view('backend.pages.permission.edit_permission', compact('permission'));
+    }
+
+    public function UpdatePermission(Request $request)
+    {
+        $permission = Permission::findOrFail($request->id);
+        $permission->name = $request->name;
+        $permission->group_name = $request->group_name;
+        $permission->save();
+        
+        return redirect('dashboard/pages/permission');
     }
 
         public function AllRoles()
@@ -50,5 +67,43 @@ class RoleController extends Controller
         $permission_groups = User::getPermissionGroup();
         return view('backend.pages.role.role_permissions', compact('roles', 'permissions', 'permission_groups'));
         return redirect()->back();
+    }
+
+      public function StoreRolePermission(Request $request)
+    {
+
+        $data = array();
+        $permissions = $request->permission;
+
+        foreach ($permissions as $key => $item) {
+            $data['role_id'] = $request->role_id;
+            $data['permission_id'] = $item;
+
+            DB::table('role_has_permissions')->insert($data);
+        }
+
+
+        return redirect('/dashboard/pages/role/permission');
+}
+public function EditRolePermission($id)
+    {
+
+        $role = Role::findOrFail($id);
+        $permissions = Permission::all();
+        $permission_groups = User::getPermissionGroup();
+
+        return view('backend.pages.role.edit_role_permission', compact('role', 'permissions', 'permission_groups'));
+    }
+
+    public function UpdateRolePermissions(Request $request, $id)
+    {
+        $role = Role::findOrFail($id);
+        $permissions = $request->permission;
+        if (!empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+        
+
+        return redirect()->route('dashboard.pages.role.permission.all');
     }
 }

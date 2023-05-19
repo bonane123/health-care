@@ -27,7 +27,7 @@
                         <div class="card-body">
 
                             <form id="myForm" method="post"
-                                action="">
+                                action="{{ route('dashboard.pages.role.permission.store') }}">
                                 @csrf
 
                                 <div class="row">
@@ -82,7 +82,7 @@
                                 @endforeach
 
 
-                                <button type="submit" class="btn btn-primary waves-effect waves-light">Save
+                                <button type="submit" class="btn btn-success waves-effect waves-light">Save
                                     Changes</button>
 
                             </form>

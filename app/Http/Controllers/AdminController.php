@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -60,4 +63,82 @@ class AdminController extends Controller
         $users = User::latest()->get();
         return view('backend.pages.users.all_users', compact('users'));
     }
+
+    public function AddUser()
+    {
+        $roles = Role::all();
+        return view('backend.pages.users.add_user', compact('roles'));
+    }
+
+    public function StoreUser(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        if ($request->roles) {
+            $user->assignRole($request->roles);
+        }
+        
+
+        return redirect()->route('all.users');
+    }
+
+     public function EditUser($id)
+    {
+        $roles = Role::all();
+        $userData = User::findOrFail($id);
+
+        return view('backend.pages.users.edit_user', compact('userData', 'roles'));
+    }
+
+        public function UpdateUser(Request $request)
+    {
+        // dd($request->gender);
+        $admin_id = $request->id;
+
+        $user = User::findOrFail($admin_id);
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->save();
+        $user->roles()->detach();
+        if ($request->roles) {
+            $user->assignRole($request->roles);
+        }
+        
+        return redirect()->route('all.users');
+}
+
+public function UndeleteUser($id)
+    {
+        // dd($id);
+        $user = User::findOrFail($id);
+        $user->status = 'active';
+        $user->save();
+        return redirect()->route('all.users');
+    }
+
+      public function DeleteUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = 'inactive';
+        $user->save();
+        
+
+        return redirect()->route('all.users');
+    }
+
+  
 }

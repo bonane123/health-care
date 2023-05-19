@@ -25,6 +25,11 @@
                         <span> All Users </span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('dashboard.pages.user.add_user') }}"><i
+                            class="mdi mdi-view-dashboard-outline"></i>
+                        <span> Add User </span></a>
+                </li>
                 <li class="menu-title font-weight-bold">HOSPITAL</li>
 
                 <li>
@@ -40,37 +45,33 @@
                     </a>
                 </li>
                 <li class="menu-title font-weight-bold">Role | Permission</li>
-                        <li>
-                            <a href="#role" data-bs-toggle="collapse">
-                                <i class="bi bi-patch-exclamation"></i>
-                                <span>Role | Permission </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="role">
-                                <ul class="nav-second-level">
+                <li>
+                    <a href="#role" data-bs-toggle="collapse">
+                        <i class="bi bi-patch-exclamation"></i>
+                        <span>Role | Permission </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="role">
+                        <ul class="nav-second-level">
 
 
-                                    <li>
-                                        <a
-                                            href="{{ route('dashboard.pages.role.all') }}">All Role | Permission</a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="{{ route('dashboard.pages.permission.all') }}">All Permissions</a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="{{ route('dashboard.pages.role.permission.add') }}">Add Role in Permission</a>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="{{ route('dashboard.pages.role.permission.all') }}">All Role in Permissions</a>
-                                    </li>
+                            <li>
+                                <a href="{{ route('dashboard.pages.role.all') }}">All Role | Permission</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('dashboard.pages.permission.all') }}">All Permissions</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('dashboard.pages.role.permission.add') }}">Add Role in Permission</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('dashboard.pages.role.permission.all') }}">All Role in Permissions</a>
+                            </li>
 
 
-                                </ul>
-                            </div>
-                        </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

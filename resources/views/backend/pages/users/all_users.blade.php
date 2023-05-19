@@ -51,6 +51,7 @@
                                             <th data-toggle="true">Number</th>
                                             <th data-toggle="true">Names</th>
                                             <th data-toggle="true">Email</th>
+                                            <th data-toggle="true">Role</th>
                                             
                                             <th width="20%">Action</th>
                                         </tr>
@@ -61,24 +62,25 @@
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
+                                                <td>{{ $user->roles->implode('name', ',') }}</td>
                                                 
 
                                                 
                                                 <td>
                                                     
-                                                        <a href=""
+                                                        <a href="{{ route('dashboard.pages.user.edit', $user->id) }}"
                                                             class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
                                                    
 
 
                                                     
                                                         @if ($user->status == 'inactive')
-                                                            <a href=""
+                                                            <a href="{{ route('dashboard.pages.user.delete', $user->id) }}"
                                                                 class="btn btn-danger rounded-pill waves-effect waves-light"
                                                                 title="InActive"><i class="fa-solid fa-thumbs-down"></i>
                                                             </a>
                                                         @else
-                                                            <a href=""
+                                                            <a href="{{ route('dashboard.pages.user.undelete', $user->id) }}"
                                                                 class="btn btn-success rounded-pill waves-effect waves-light"
                                                                 title="Active"><i class="fa-solid fa-thumbs-up"></i></a>
                                                         @endif

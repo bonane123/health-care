@@ -48,7 +48,7 @@
                                                 @endforeach
                                             </td>
                                             <td>
-                                                <a href=""
+                                                <a href="{{ route('dashboard.pages.role.permission.edit', $item->id) }}"
                                                     class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
 
                                                 <a href=""

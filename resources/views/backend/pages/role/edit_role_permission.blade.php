@@ -1,4 +1,4 @@
-@extends('backend.layout.dashboard')
+@extends('backend.main.main_dashboard')
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
@@ -88,7 +88,7 @@
                                 @endforeach
 
 
-                                <button type="submit" class="btn btn-primary waves-effect waves-light">Save
+                                <button type="submit" class="btn btn-success waves-effect waves-light">Save
                                     Changes</button>
 
                             </form>

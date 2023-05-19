@@ -35,6 +35,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/more/information', [AdminController::class, 'AdminProfile'])->name('more.information');
     Route::post('/more/information/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
     Route::get('/users/all', [AdminController::class, 'AllUsers'])->name('all.users');
+    Route::get('/user/add', [AdminController::class, 'AddUser'])->name('dashboard.pages.user.add_user');
+    Route::post('/user/store', [AdminController::class, 'StoreUser'])->name('dashboard.pages.user.store');
+    Route::get('/user/edit/{id}', [AdminController::class, 'EditUser'])->name('dashboard.pages.user.edit');
+    Route::post('/dashboard/pages/user/update', [AdminController::class, 'UpdateUser'])->name('dashboard.pages.user.update');
+    Route::get('/user/undelete/{id}', [AdminController::class, 'UnDeleteUser'])->name('dashboard.pages.user.delete');
+    Route::get('/user/delete/{id}', [AdminController::class, 'DeleteUser'])->name('dashboard.pages.user.undelete');
+    
 
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'edit')->name('profile.edit');
@@ -63,6 +70,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/dashboard/pages/role/add',  'AddRole')->name('dashboard.pages.role.add');
         Route::get('/dashboard/pages/role/permission/add',  'AddRolePermission')->name('dashboard.pages.role.permission.add');
         Route::get('/dashboard/pages/role/permission',  'AllRolePermission')->name('dashboard.pages.role.permission.all');
+        Route::post('/dashboard/pages/role/permission/store',   'StoreRolePermission')->name('dashboard.pages.role.permission.store');
+        Route::get('/dashboard/pages/role/permission/edit/{id}',  'EditRolePermission')->name('dashboard.pages.role.permission.edit');
+        Route::post('/dashboard/pages/role/permission/update/{id}',  'UpdateRolePermissions')->name('dashboard.pages.role.permission.update');
+        Route::get('/dashboard/pages/permission/edit/{id}',  'EditPermission')->name('dashboard.pages.permission.edit');
+        Route::put('/dashboard/pages/permission/update',  'UpdatePermission')->name('dashboard.pages.permission.update');
     });
 });
 

@@ -1,4 +1,4 @@
-@extends('backend.layout.dashboard')
+@extends('backend.main.main_dashboard')
 @section('admin')
     <div class="content">
 
@@ -49,27 +49,20 @@
                                         <select name="group_name" class="form-select" id="example-select">
                                             <option> Select One Permission Group </option>
 
-                                            <option value="ikibaho"
-                                                {{ $permission->group_name == 'ikibaho' ? 'selected' : '' }}>Ikibaho
+                                            <option value="dashboard"
+                                                {{ $permission->group_name == 'dashboard' ? 'selected' : '' }}>Dashboard
                                             </option>
-                                            <option value="ibisabwa"
-                                                {{ $permission->group_name == 'ibisabwa' ? 'selected' : '' }}>ibisabwa
-                                            </option>
+                                            
                                             <option value="users"
                                                 {{ $permission->group_name == 'users' ? 'selected' : '' }}>Users
                                             </option>
-                                            <option value="ubusabe"
-                                                {{ $permission->group_name == 'ubusabe' ? 'selected' : '' }}>Ubusabe
+                                            <option value="category"
+                                                {{ $permission->group_name == 'category' ? 'selected' : '' }}>Category
                                             </option>
-                                            <option value="ibyiciro"
-                                                {{ $permission->group_name == 'ibyiciro' ? 'selected' : '' }}>Ibyiciro
+                                            <option value="hospital"
+                                                {{ $permission->group_name == 'hospital' ? 'selected' : '' }}>Hospital
                                             </option>
-                                            <option value="amakuru"
-                                                {{ $permission->group_name == 'amakuru' ? 'selected' : '' }}>Amakuru
-                                            </option>
-                                            <option value="evaluate"
-                                                {{ $permission->group_name == 'evaluate' ? 'selected' : '' }}>Evaluate
-                                            </option>
+                                            
                                             <option value="role"
                                                 {{ $permission->group_name == 'role' ? 'selected' : '' }}>Role |
                                                 Permission </option>
@@ -83,7 +76,7 @@
 
 
 
-                                <button type="submit" class="btn btn-primary waves-effect waves-light">Save
+                                <button type="submit" class="btn btn-success waves-effect waves-light">Save
                                     Changes</button>
 
                             </form>

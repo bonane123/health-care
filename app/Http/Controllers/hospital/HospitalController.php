@@ -13,24 +13,46 @@ use Illuminate\Http\Request;
 
 class HospitalController extends Controller
 {
-    public function HospitalCategory(){
+    public function HospitalCategory()
+    {
         $categories = Hospital::latest()->get();
         return view('backend.pages.hospital_categories', compact('categories'));
     }
 
-    public function HospitalCategoryStore(Request $request){
+    public function HospitalCategoryStore(Request $request)
+    {
         $category = new Hospital();
         $category->category = $request->category;
         $category->save();
-        
+
         return redirect()->back();
     }
+    public function HospitalCategoryEdit($id)
+    {
+        $category = Hospital::findOrFail($id);
+        return view('backend.pages.hospital.hospital_category_edit', compact('category'));
+    }
+    public function HospitalCategoryEditStore(Request $request)
+    {
+        // dd($request);
+        $category = Hospital::findOrFail($request->id);
+        $category->category = $request->category;
+        $category->save();
+        return redirect('/hospital/categories');
+    }
+    public function HospitalCategoryDelete($id)
+    {
+        Hospital::findOrFail($id)->delete();
+        return redirect('/hospital/categories');
+    }
 
-    public function AllHospitals(){
+    public function AllHospitals()
+    {
         $hospitals = Hospital_information::latest()->get();
         return view('backend.pages.hospital.all_hospitals', compact('hospitals'));
     }
-    public function AddHospital(){
+    public function AddHospital()
+    {
         $provinces = Provinces::get();
         $districts = Districts::get();
         $sectors = Sectors::get();
@@ -38,7 +60,38 @@ class HospitalController extends Controller
         $hospital_types = Hospital::get();
         return view('backend.pages.hospital.add_hospital', compact('provinces', 'districts', 'sectors', 'cells', 'hospital_types'));
     }
-    public function AddNewHospital(Request $request){
+    public function HospitalEdit($id){
+        $hospital = Hospital_information::findOrFail($id);
+        $provinces = Provinces::get();
+        $districts = Districts::get();
+        $sectors = Sectors::get();
+        $cells = Cells::get();
+        $hospital_types = Hospital::get();
+        return view('backend.pages.hospital.edit_hospital', compact('hospital', 'provinces', 'districts', 'sectors', 'cells', 'hospital_types'));
+    }
+    public function HospitalEditStore(Request $request){
+        // dd($request);
+        $hospital = Hospital_information::findOrFail($request->id);
+        $hospital->name = $request->name;
+        $hospital->description = $request->description;
+        $hospital->phone = $request->phone;
+        $hospital->email = $request->email;
+        $hospital->province_id = $request->province_id;
+        $hospital->district_id = $request->district_id;
+        $hospital->sector_id = $request->sector_id;
+        $hospital->cell_id = $request->cell_id;
+        $hospital->hospital_id = $request->hospital_id;
+        $hospital->save();
+        return redirect('/hospital/all');
+    }
+
+    public function HospitalDelete($id)
+    {
+        Hospital_information::findOrFail($id)->delete();
+        return redirect('/hospital/all');
+    }
+    public function AddNewHospital(Request $request)
+    {
         $hospital = new Hospital_information();
         $hospital->name = $request->name;
         $hospital->email = $request->email;
@@ -60,27 +113,27 @@ class HospitalController extends Controller
 
 
 
-    
-public function GetDistrict($province_id)
+
+    public function GetDistrict($province_id)
     {
-       
+
 
         $dists = Districts::where('province_id', $province_id)->orderBy('districtname', 'ASC')->get();
         return json_encode($dists);
     } // End Mehtod
     public function GetSector($district_id)
     {
-        
+
 
         $sects = Sectors::where('district_id', $district_id)->orderBy('sectorname', 'ASC')->get();
         return json_encode($sects);
     } // End Mehtod
     public function GetCell($sector_id)
     {
-        
+
 
         $cels = Cells::where('sector_id', $sector_id)->orderBy('cellname', 'ASC')->get();
         return json_encode($cels);
     } // End Mehtod
-    
+
 }

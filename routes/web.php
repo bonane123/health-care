@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Frontend;
 use App\Http\Controllers\hospital\HospitalController;
+use App\Http\Controllers\patient;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -53,14 +55,24 @@ Route::middleware('auth')->group(function () {
     Route::controller(HospitalController::class)->group(function () {
         Route::get('/hospital/categories', 'HospitalCategory')->name('hospital.category');
         Route::post('/hospital/categories/store', 'HospitalCategoryStore')->name('hospital.category.store');
+        Route::get('/hospital/category/{id}', 'HospitalCategoryEdit')->name('hospital.category.edit');
+        Route::get('/hospital/category/delete/{id}', 'HospitalCategoryDelete')->name('hospital.category.delete');
+        Route::put('/hospital/category/edit/store', 'HospitalCategoryEditStore')->name('hospital.category.edit.store');
         Route::get('/hospital/all', 'AllHospitals')->name('all.hospitals');
         Route::get('/hospital/add', 'AddHospital')->name('add.hospital');
         Route::post('/hospital/add/store', 'AddNewHospital')->name('hospital.add.new');
+        Route::get('/hospital/edit/{id}', 'HospitalEdit')->name('hospital.edit');
+        Route::put('/hospital/update', 'HospitalEditStore')->name('hospital.edit.store');
+        Route::get('/hospital/delete/{id}', 'HospitalDelete')->name('hospital.delete');
         
         Route::get('/district/ajax/{province_id}', 'GetDistrict');
         Route::get('/sector/ajax/{district_id}', 'GetSector');
         Route::get('/cell/ajax/{sector_id}', 'GetCell');
         
+    });
+
+    Route::controller(PatientController::class)->group(function (){
+        Route::get('/patient', 'AddPatient')->name('patient.add');
     });
 
     Route::controller(RoleController::class)->group(function (){

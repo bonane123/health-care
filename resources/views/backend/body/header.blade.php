@@ -31,7 +31,7 @@ $id = Auth::user()->id;
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light d-inline-flex p-2 align-items-center" data-bs-toggle="dropdown"
                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ !empty($adminData->photo) ? url('upload/admin_images/' . $adminData->photo) : url('upload/profile.png') }} "
+                    <img src="{{ !empty($userData->photo) ? url('upload/admin_images/' . $userData->photo) : url('upload/profile.png') }} "
                         alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ms-1">
                         @if ($userData->username === null)

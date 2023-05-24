@@ -57,6 +57,7 @@
                                             <th data-hide="phone, tablet">District</th>
                                             <th data-hide="phone, tablet">Sector</th>
                                             <th data-hide="phone, tablet">Cell</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -68,6 +69,14 @@
                                             <td>{{ $hospital['district']['districtname'] }}</td>
                                             <td>{{ $hospital['sector']['sectorname'] }} </td>
                                             <td>{{ $hospital['cell']['cellname'] }}</td>
+                                            <td>
+                                                    <a href="{{ route('hospital.edit', $hospital->id) }}"
+                                                        class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
+
+                                                    <a href="{{ route('hospital.delete', $hospital->id) }}"
+                                                        class="btn btn-danger rounded-pill waves-effect waves-light"
+                                                        id="delete">Delete</a>
+                                                </td>
                                             
                                         </tr>
                                             

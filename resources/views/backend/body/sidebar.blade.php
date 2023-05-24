@@ -25,11 +25,7 @@
                         <span> All Users </span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('dashboard.pages.user.add_user') }}"><i
-                            class="mdi mdi-view-dashboard-outline"></i>
-                        <span> Add User </span></a>
-                </li>
+                
                 <li class="menu-title font-weight-bold">HOSPITAL</li>
 
                 <li>
@@ -42,6 +38,14 @@
                     <a href="{{ route('all.hospitals') }}">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span> All hospitals </span>
+                    </a>
+                </li>
+                <li class="menu-title font-weight-bold">PATIENT</li>
+
+                <li>
+                    <a href="{{ route('patient.add') }}">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span> Add Patient </span>
                     </a>
                 </li>
                 <li class="menu-title font-weight-bold">Role | Permission</li>

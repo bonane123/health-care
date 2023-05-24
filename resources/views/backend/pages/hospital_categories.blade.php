@@ -53,7 +53,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Category</th>
-                                            
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -61,7 +61,14 @@
                                         <tr>
                                             <th scope="row">{{ $key + 1 }}</th>
                                             <td>{{ $category->category }}</td>
-                                            
+                                            <td>
+                                                    <a href="{{ route('hospital.category.edit', $category->id) }}"
+                                                        class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
+
+                                                    <a href="{{ route('hospital.category.delete', $category->id) }}"
+                                                        class="btn btn-danger rounded-pill waves-effect waves-light"
+                                                        id="delete">Delete</a>
+                                                </td>
                                         </tr>
                                             
                                         @endforeach

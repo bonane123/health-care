@@ -29,6 +29,8 @@ Route::controller(Frontend::class)->group(function () {
     Route::get('/services', 'Services')->name('services');
     Route::get('/contact', 'Contact')->name('contact');
     Route::get('/appointment', 'Appointment')->name('appointment');
+    Route::get('/e-learning/patient', 'ElearningPatient')->name('e-learning.patient');
+    Route::get('/e-learning/healthcare', 'ElearningHealthCare')->name('e-learning.healthcare');
 });
 
 Route::middleware('auth')->group(function () {

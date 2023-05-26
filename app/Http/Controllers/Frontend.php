@@ -21,4 +21,10 @@ class Frontend extends Controller
     public function Appointment(){
         return view('frontend.appointment');
     }
+    public function ElearningPatient(){
+        return view('frontend.elearning_patient');
+    }
+    public function ElearningHealthCare(){
+        return view('frontend.elearning_healthcare');
+    }
 }

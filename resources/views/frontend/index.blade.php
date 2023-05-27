@@ -208,22 +208,25 @@
                         <h1 class="display-5 mb-0">We Offer The Best Quality Dental Services</h1>
                     </div>
                     <div class="row g-5">
-                        <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.6s">
-                            <div class="rounded-top overflow-hidden">
-                                <img class="img-fluid" src="{{ asset('frontend/img/service-1.jpg') }}" alt="">
-                            </div>
-                            <div class="position-relative bg-light rounded-bottom text-center p-4">
-                                <h5 class="m-0">Cosmetic Dentistry</h5>
-                            </div>
-                        </div>
-                        <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.9s">
-                            <div class="rounded-top overflow-hidden">
-                                <img class="img-fluid" src="{{ asset('frontend/img/service-2.jpg') }}" alt="">
-                            </div>
-                            <div class="position-relative bg-light rounded-bottom text-center p-4">
-                                <h5 class="m-0">Dental Implants</h5>
-                            </div>
-                        </div>
+                        <a href="{{ route('e-learning.patient') }}" class="col-md-6 service-item wow zoomIn" data-wow-delay="0.6s">
+                                    <div class="rounded-top overflow-hidden">
+                                        <img class="img-fluid" src="{{ asset('frontend/img/service-1.jpg') }}"
+                                            alt="">
+                                    </div>
+                                    <div class="position-relative bg-light rounded-bottom text-center p-4">
+                                        <h5 class="m-0">Cosmetic Dentistry</h5>
+                                    </div>
+                                </a>
+                            
+                                <a href="{{ route('e-learning.healthcare') }}" class="col-md-6 service-item wow zoomIn" data-wow-delay="0.9s">
+                                    <div class="rounded-top overflow-hidden">
+                                        <img class="img-fluid" src="{{ asset('frontend/img/service-2.jpg') }}"
+                                            alt="">
+                                    </div>
+                                    <div class="position-relative bg-light rounded-bottom text-center p-4">
+                                        <h5 class="m-0">Dental Implants</h5>
+                                    </div>
+                                </a>
                     </div>
                 </div>
             </div>

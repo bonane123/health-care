@@ -7,6 +7,7 @@ use App\Http\Controllers\patient;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\VideoCallController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,5 +92,10 @@ Route::middleware('auth')->group(function () {
         Route::put('/dashboard/pages/permission/update',  'UpdatePermission')->name('dashboard.pages.permission.update');
     });
 });
+Route::controller(VideoCallController::class)->group(function (){
+    Route::get('/video-call', 'index');
+
+});
+
 
 require __DIR__.'/auth.php';

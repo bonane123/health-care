@@ -40,6 +40,15 @@
                         <span> All hospitals </span>
                     </a>
                 </li>
+                <li class="menu-title font-weight-bold">E-LEARNING</li>
+
+                <li>
+                    <a href="{{ route('hospital.category') }}">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span> Add Course </span>
+                    </a>
+                </li>
+                
                 <li class="menu-title font-weight-bold">PATIENT</li>
 
                 <li>

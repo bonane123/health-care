@@ -140,5 +140,11 @@ public function UndeleteUser($id)
         return redirect()->route('all.users');
     }
 
+    public function AllCourse(){
+        return view('backend.pages.course.all_course');
+    }
+public function AddCourse(){
+    return view('backend.pages.course.add_course');
+}
   
 }

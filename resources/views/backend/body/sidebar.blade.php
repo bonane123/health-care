@@ -43,9 +43,9 @@
                 <li class="menu-title font-weight-bold">E-LEARNING</li>
 
                 <li>
-                    <a href="{{ route('hospital.category') }}">
+                    <a href="{{ route('dashboard.course') }}">
                         <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span> Add Course </span>
+                        <span> Course </span>
                     </a>
                 </li>
                 

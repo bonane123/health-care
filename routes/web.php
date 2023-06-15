@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/dashboard/pages/user/update', [AdminController::class, 'UpdateUser'])->name('dashboard.pages.user.update');
     Route::get('/user/undelete/{id}', [AdminController::class, 'UnDeleteUser'])->name('dashboard.pages.user.delete');
     Route::get('/user/delete/{id}', [AdminController::class, 'DeleteUser'])->name('dashboard.pages.user.undelete');
+    Route::get('/dashboard/course', [AdminController::class, 'AllCourse'])->name('dashboard.course');
+    Route::get('/dashboard/course/add', [AdminController::class, 'AddCourse'])->name('add.course');
     
 
     Route::controller(ProfileController::class)->group(function () {

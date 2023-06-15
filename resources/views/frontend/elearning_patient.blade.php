@@ -7,7 +7,7 @@
              <div class="row">
                  <div class="col-3">
                      <div class="card">
-                         <div class="card-body">
+                         <div class="card-body position-sticky top-0 bg-light p-3">
                              <h4 class="header-title">Course content - Patient Education</h4>
                              {{-- <p class="text-muted font-14 mb-3">Scrollspy also works with nested <code>.nav</code>s.
                                  If a nested <code>.nav</code> is <code>.active</code>, its parents will also be
@@ -15,18 +15,18 @@
                                  class change.
                              </p> --}}
 
-                             <div class="row ">
+                             <div class="row " style="position: relative; z-index: 2;">
                                  <div class="col-9">
                                      <nav id="navbar-example3" class="navbar navbar-light flex-column">
                                          {{-- <a class="navbar-brand" href="#">Navbar</a> --}}
                                          <nav class="nav nav-pills flex-column">
-                                             <a class="nav-link active" href="#item-1">Item 1</a>
+                                             <a class="nav-link active text-uppercase font-weight-bold" href="#item-1">Item 1</a>
                                              <nav class="nav nav-pills flex-column">
                                                  <a class="nav-link ms-3 my-1" href="#item-1-1">Item 1-1</a>
                                                  <a class="nav-link ms-3 my-1" href="#item-1-2">Item 1-2</a>
                                              </nav>
-                                             <a class="nav-link" href="#item-2">Item 2</a>
-                                             <a class="nav-link" href="#item-3">Item 3</a>
+                                             <a class="nav-link text-uppercase font-weight-bold" href="#item-2">Item 2</a>
+                                             <a class="nav-link text-uppercase font-weight-bold" href="#item-3">Item 3</a>
                                              <nav class="nav nav-pills flex-column">
                                                  <a class="nav-link ms-3 my-1" href="#item-3-1">Item 3-1</a>
                                                  <a class="nav-link ms-3 my-1" href="#item-3-2">Item 3-2</a>

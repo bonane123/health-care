@@ -10,9 +10,32 @@ use App\Models\Hospital_information;
 use App\Models\Provinces;
 use App\Models\Sectors;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class HospitalController extends Controller
 {
+
+    public function index()
+    {
+        $list = Hospital::all();
+        return response()->json([
+            'success' => true,
+            'data' => $list,
+        ], 200);
+    }
+
+    public function show($id)
+    {
+        $category = Hospital::find($id);
+        return response($category);
+    }
+
+    public function create(Request $request)
+    {
+        $list = Hospital::create(['category' => $request->category]);
+        return response($list, Response::HTTP_CREATED);
+    }
+
     public function HospitalCategory()
     {
         $categories = Hospital::latest()->get();
@@ -60,7 +83,8 @@ class HospitalController extends Controller
         $hospital_types = Hospital::get();
         return view('backend.pages.hospital.add_hospital', compact('provinces', 'districts', 'sectors', 'cells', 'hospital_types'));
     }
-    public function HospitalEdit($id){
+    public function HospitalEdit($id)
+    {
         $hospital = Hospital_information::findOrFail($id);
         $provinces = Provinces::get();
         $districts = Districts::get();
@@ -69,7 +93,8 @@ class HospitalController extends Controller
         $hospital_types = Hospital::get();
         return view('backend.pages.hospital.edit_hospital', compact('hospital', 'provinces', 'districts', 'sectors', 'cells', 'hospital_types'));
     }
-    public function HospitalEditStore(Request $request){
+    public function HospitalEditStore(Request $request)
+    {
         // dd($request);
         $hospital = Hospital_information::findOrFail($request->id);
         $hospital->name = $request->name;

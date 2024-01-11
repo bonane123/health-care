@@ -12,7 +12,8 @@ use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
-    public function AdminDashboard(){
+    public function AdminDashboard()
+    {
         $userData = User::all();
         return view('backend.pages.dashboard', compact('userData'));
     }
@@ -28,7 +29,8 @@ class AdminController extends Controller
         return redirect('/');
     }
 
-    public function AdminProfile(){
+    public function AdminProfile()
+    {
         $id = Auth::user()->id;
         $adminData = User::find($id);
         return view('backend.pages.edit_profile', compact('adminData'));
@@ -59,7 +61,8 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
     } // End Method 
 
-    public function AllUsers(){
+    public function AllUsers()
+    {
         $users = User::latest()->get();
         return view('backend.pages.users.all_users', compact('users'));
     }
@@ -89,12 +92,12 @@ class AdminController extends Controller
         if ($request->roles) {
             $user->assignRole($request->roles);
         }
-        
+
 
         return redirect()->route('all.users');
     }
 
-     public function EditUser($id)
+    public function EditUser($id)
     {
         $roles = Role::all();
         $userData = User::findOrFail($id);
@@ -102,7 +105,7 @@ class AdminController extends Controller
         return view('backend.pages.users.edit_user', compact('userData', 'roles'));
     }
 
-        public function UpdateUser(Request $request)
+    public function UpdateUser(Request $request)
     {
         // dd($request->gender);
         $admin_id = $request->id;
@@ -117,11 +120,11 @@ class AdminController extends Controller
         if ($request->roles) {
             $user->assignRole($request->roles);
         }
-        
-        return redirect()->route('all.users');
-}
 
-public function UndeleteUser($id)
+        return redirect()->route('all.users');
+    }
+
+    public function UndeleteUser($id)
     {
         // dd($id);
         $user = User::findOrFail($id);
@@ -130,21 +133,22 @@ public function UndeleteUser($id)
         return redirect()->route('all.users');
     }
 
-      public function DeleteUser($id)
+    public function DeleteUser($id)
     {
         $user = User::findOrFail($id);
         $user->status = 'inactive';
         $user->save();
-        
+
 
         return redirect()->route('all.users');
     }
 
-    public function AllCourse(){
+    public function AllCourse()
+    {
         return view('backend.pages.course.all_course');
     }
-public function AddCourse(){
-    return view('backend.pages.course.add_course');
-}
-  
+    public function AddCourse()
+    {
+        return view('backend.pages.course.add_course');
+    }
 }

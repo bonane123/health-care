@@ -68,3 +68,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Progress
 
 The course will be added
+Will be able to generate the report of patient progress

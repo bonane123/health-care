@@ -19,7 +19,7 @@ class HospitalTest extends TestCase
 
         $responseData = $response->decodeResponseJson();
 
-        // dd($responseData);
+        dd($responseData);
 
         $response->assertStatus(200)
             ->assertJsonStructure([

@@ -71,3 +71,4 @@ The course will be added
 Will be able to generate the report of patient progress
 The creation of the appointment with doctor will be done within the system
 we will create auth with google
+in 2 months, the project will be deployed
